@@ -1,0 +1,35 @@
+#ifndef ARRAYSTACK_H
+#define ARRAYSTACK_H
+#include <iostream>
+
+struct stack {
+    int stack[100];
+    int size = 0;
+};
+void printStack(stack &s) {
+    std::cout << "Stack ";
+    for (int i = 0; i < s.size; i++) {
+        std::cout << s.stack[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
+void push(stack &s, int value) {
+    if (s.size >= 100) {
+        std::cerr << "Stack dvvren bn " << value << std::endl;
+        return;
+    }
+    s.stack[s.size] = value;
+    s.size++;
+}
+
+int pop(stack &s) {
+    if (s.size <= 0) {
+        std::cerr << "Stack hooson bn" << std::endl;
+        return -1; // Error!!
+    }
+    s.size--;
+    return s.stack[s.size];
+}
+
+#endif // ARRAYSTACK_H
